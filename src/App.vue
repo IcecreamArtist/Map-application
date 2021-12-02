@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Search>
-        <p>Enter the coordinate</p>
+        <p>Enter the coordinate, in the format of "39.993169" (without parentheses), the current possition is {{position}}.</p>
         <input type="text" placeholder="enter the x-coordinate" v-model="Keyword1">
       <input type="text" placeholder="enter the y-coordinate" v-model="Keyword2">
       <button v-on:click="vuefunction(Keyword1,Keyword2)">search</button>
@@ -41,8 +41,7 @@ export default {
   components: {Aplayer, Dataa}, // 注册
   methods: {
     vuefunction: function (msg,msg2) {
-      alert(msg);
-      alert(msg2);
+      this.position = [msg,msg2]
     }
   }
 };
