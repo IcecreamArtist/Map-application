@@ -1,28 +1,68 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Search>
+        <p>Enter the coordinate</p>
+        <input type="text" placeholder="enter the x-coordinate" v-model="Keyword1">
+      <input type="text" placeholder="enter the y-coordinate" v-model="Keyword2">
+      <button v-on:click="vuefunction(Keyword1,Keyword2)">search</button>
+    </Search>
+    <Dataa></Dataa>
+    <amap :zoom="15" :center="position">
+      <amap-marker
+          :position="position"
+          :label="{
+          content: 'Hello, AMap-Vue!',
+          direction: 'bottom',
+        }"
+          draggable
+      />
+    </amap>
+    <aplayer autoplay :music="{
+        title: '情非得已',
+        author: '庚澄庆',
+        url: 'https://www.kugou.com/song/#hash=7A38DFB37ABF8E177E80C837C5F53DFE&album_id=4050516',
+         pic: 'https://oss.tan8.com/violin/89/44668/44668_prev.jpg',
+        lrc: '[00:00.00]lrc here\n[00:01.00]aplayer'
+    }">
+    </aplayer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Dataa from "@/components/Dataa";
+import Aplayer from 'vue-aplayer'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  data() {
+    return {
+      position: [116.473179, 39.993169]
+    };
+  },
+  components: {Aplayer, Dataa}, // 注册
+  methods: {
+    vuefunction: function (msg,msg2) {
+      alert(msg);
+      alert(msg2);
+    }
   }
-}
+};
 </script>
 
 <style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+</style>
+
+<style lang="less" scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 80%;
 }
 </style>
