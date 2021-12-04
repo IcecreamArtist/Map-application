@@ -11,7 +11,7 @@
       <amap-marker
           :position="position"
           :label="{
-          content: 'Hello, AMap-Vue!',
+          content: 'You are here!',
           direction: 'bottom',
         }"
           draggable
